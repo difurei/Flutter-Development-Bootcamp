@@ -1,0 +1,4 @@
+#Thu Oct 20 03:06:57 MSK 2022
+base.0=C\:\\Users\\youki\\StudioProjects\\destini-challenge-starting\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
