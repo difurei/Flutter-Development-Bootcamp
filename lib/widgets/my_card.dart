@@ -5,10 +5,10 @@ class MyCard extends StatelessWidget {
   final double width;
   final Color color;
   final Widget cardChild;
-  VoidCallback voidCallback;
+  VoidCallback onTap;
 
   MyCard(
-      this.height, this.width, this.color, this.voidCallback, this.cardChild);
+  {this.height, this.width, this.color, this.onTap, this.cardChild});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class MyCard extends StatelessWidget {
         height: height,
         width: width,
         child: GestureDetector(
-          onTap: voidCallback,
+          onTap: onTap,
           child: Card(
               child: cardChild,
               color: color,

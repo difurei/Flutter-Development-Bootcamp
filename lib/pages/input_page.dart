@@ -2,10 +2,10 @@ import 'package:bmi_calculator/widgets/my_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../widgets/constants.dart';
 import '../widgets/my_bottom_navbar.dart';
+import '../widgets/my_slider.dart';
 
-const activeCardColor = Color(0xFF1D1E55);
-const inactiveCardColor = Color(0xFF1D1E33);
 enum Gender { MALE, FEMALE }
 
 class InputPage extends StatefulWidget {
@@ -14,8 +14,11 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-
   Gender selectedGender = Gender.MALE;
+
+  double _currentHeightValue = 150;
+  double _currentWeightValue = 60;
+  double _currentAgeValue = 25;
 
   Widget buildFirstAndSecondChildCard(IconData faIcon, String text) {
     return Column(
@@ -47,47 +50,127 @@ class _InputPageState extends State<InputPage> {
               Row(
                 children: [
                   MyCard(
-                      MediaQuery.of(context).size.height * 0.24,
-                      MediaQuery.of(context).size.width * 0.45,
-                      selectedGender == Gender.MALE
-                          ? activeCardColor
-                          : inactiveCardColor, () {
-                    setState(() {
-                      selectedGender = Gender.MALE;
-                    });
-                  },
-                      buildFirstAndSecondChildCard(
+                      height: MediaQuery.of(context).size.height * 0.24,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      color: selectedGender == Gender.MALE
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
+                      onTap: () {
+                        setState(() {
+                          selectedGender = Gender.MALE;
+                        });
+                      },
+                      cardChild: buildFirstAndSecondChildCard(
                           FontAwesomeIcons.mars, 'Male')),
                   MyCard(
-                      MediaQuery.of(context).size.height * 0.24,
-                      MediaQuery.of(context).size.width * 0.45,
-                      selectedGender == Gender.FEMALE
-                          ? activeCardColor
-                          : inactiveCardColor, () {
-                    setState(() {
-                      selectedGender = Gender.FEMALE;
-                    });
-                  },
-                      buildFirstAndSecondChildCard(
+                      height: MediaQuery.of(context).size.height * 0.24,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      color: selectedGender == Gender.FEMALE
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
+                      onTap: () {
+                        setState(() {
+                          selectedGender = Gender.FEMALE;
+                        });
+                      },
+                      cardChild: buildFirstAndSecondChildCard(
                           FontAwesomeIcons.venus, 'Female')),
                 ],
               ),
-              MyCard(MediaQuery.of(context).size.height * 0.24, double.infinity,
-                  Color(0xFF1D1E55), () {}, Text('ff')),
+              MyCard(
+                  height: MediaQuery.of(context).size.height * 0.24,
+                  width: double.infinity,
+                  color: kActiveCardColor,
+                  onTap: () {},
+                  cardChild: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text('height'.toUpperCase(), style: kLabelTextStyle),
+                      Row(
+                        textBaseline: TextBaseline.alphabetic,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.baseline,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text(_currentHeightValue.round().toString(),
+                                style: kLabelTextNumberStyle),
+                          ),
+                          Text('cm', style: kLabelSantimitersStyle)
+                        ],
+                      ),
+                      SliderTheme(
+                        data: SliderTheme.of(context).copyWith(
+                          thumbShape:
+                              RoundSliderThumbShape(enabledThumbRadius: 10),
+                        ),
+                        child: Slider(
+                            activeColor: kBottomNavbarColor,
+                            value: _currentHeightValue,
+                            min: 120,
+                            max: 250,
+                            onChanged: (double value) {
+                              setState(() {
+                                _currentHeightValue = value;
+                              });
+                            }),
+                      ),
+                    ],
+                  )),
               Row(
                 children: [
                   MyCard(
-                      MediaQuery.of(context).size.height * 0.24,
-                      MediaQuery.of(context).size.width * 0.45,
-                      activeCardColor,
-                      () {},
-                      Text('ff')),
+                      height: MediaQuery.of(context).size.height * 0.24,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      color: kActiveCardColor,
+                      onTap: () {},
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('weight'.toUpperCase(), style: kLabelTextStyle),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text(_currentWeightValue.round().toString(),
+                                style: kLabelTextNumberStyle),
+                          ),
+                          MySlider(
+                              min: 40,
+                              max: 200,
+                              sliderColor: Colors.white,
+                              sliderValue: _currentWeightValue,
+                              onSliderChanged: (double value) {
+                                setState(() {
+                                  _currentWeightValue = value;
+                                });
+                              }),
+                        ],
+                      )),
                   MyCard(
-                      MediaQuery.of(context).size.height * 0.24,
-                      MediaQuery.of(context).size.width * 0.45,
-                      activeCardColor,
-                      () {},
-                      Text('ff')),
+                      height: MediaQuery.of(context).size.height * 0.24,
+                      width: MediaQuery.of(context).size.width * 0.45,
+                      color: kActiveCardColor,
+                      onTap: () {},
+                      cardChild: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text('age'.toUpperCase(), style: kLabelTextStyle),
+                          Padding(
+                            padding: const EdgeInsets.all(4.0),
+                            child: Text(_currentAgeValue.round().toString(),
+                                style: kLabelTextNumberStyle),
+                          ),
+                          MySlider(
+                              min: 10,
+                              max: 80,
+                              sliderColor: Colors.white,
+                              sliderValue: _currentAgeValue,
+                              onSliderChanged: (double value) {
+                                setState(() {
+                                  _currentAgeValue = value;
+                                });
+                              }),
+                        ],
+                      )),
                 ],
               ),
             ],
