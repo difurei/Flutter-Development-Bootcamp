@@ -1,8 +1,10 @@
+import 'package:bmi_calculator/models/calculator_brain.dart';
+import 'package:bmi_calculator/pages/result_page.dart';
 import 'package:bmi_calculator/widgets/my_card.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-import '../widgets/constants.dart';
+import '../constants.dart';
 import '../widgets/my_bottom_navbar.dart';
 import '../widgets/my_slider.dart';
 
@@ -85,7 +87,8 @@ class _InputPageState extends State<InputPage> {
                   cardChild: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text('height'.toUpperCase(), style: kLabelTextStyle),
+                      Text('height'.toUpperCase(),
+                          style: kLabelRegularTextStyle),
                       Row(
                         textBaseline: TextBaseline.alphabetic,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -94,7 +97,7 @@ class _InputPageState extends State<InputPage> {
                           Padding(
                             padding: const EdgeInsets.all(4.0),
                             child: Text(_currentHeightValue.round().toString(),
-                                style: kLabelTextNumberStyle),
+                                style: kNumberLargeStyle),
                           ),
                           Text('cm', style: kLabelSantimitersStyle)
                         ],
@@ -127,12 +130,37 @@ class _InputPageState extends State<InputPage> {
                       cardChild: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('weight'.toUpperCase(), style: kLabelTextStyle),
-                          Padding(
-                            padding: const EdgeInsets.all(4.0),
-                            child: Text(_currentWeightValue.round().toString(),
-                                style: kLabelTextNumberStyle),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                icon: Icon(FontAwesomeIcons.minus),
+                                onPressed: () {
+                                  setState(() {
+                                    _currentWeightValue--;
+                                  });
+                                },
+                              ),
+                              Text('weight'.toUpperCase(),
+                                  style: kLabelSmallTextStyle),
+                              IconButton(
+                                icon: Icon(FontAwesomeIcons.plus),
+                                onPressed: () {
+                                  setState(() {
+                                    _currentWeightValue++;
+                                  });
+                                },
+                              )
+                            ],
                           ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 4),
+                            child: Text(_currentWeightValue.round().toString(),
+                                style: kNumberLargeStyle),
+                          ),
+                          /* RoundIconButton(
+                            icon: FontAwesomeIcons.minus,
+                          )*/
                           MySlider(
                               min: 40,
                               max: 200,
@@ -153,11 +181,33 @@ class _InputPageState extends State<InputPage> {
                       cardChild: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Text('age'.toUpperCase(), style: kLabelTextStyle),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              IconButton(
+                                icon: Icon(FontAwesomeIcons.minus),
+                                onPressed: () {
+                                  setState(() {
+                                    _currentAgeValue--;
+                                  });
+                                },
+                              ),
+                              Text('age'.toUpperCase(),
+                                  style: kLabelSmallTextStyle),
+                              IconButton(
+                                icon: Icon(FontAwesomeIcons.plus),
+                                onPressed: () {
+                                  setState(() {
+                                    _currentAgeValue++;
+                                  });
+                                },
+                              ),
+                            ],
+                          ),
                           Padding(
-                            padding: const EdgeInsets.all(4.0),
+                            padding: const EdgeInsets.symmetric(vertical: 4.0),
                             child: Text(_currentAgeValue.round().toString(),
-                                style: kLabelTextNumberStyle),
+                                style: kNumberRegularStyle),
                           ),
                           MySlider(
                               min: 10,
@@ -176,6 +226,12 @@ class _InputPageState extends State<InputPage> {
             ],
           ),
         ),
-        bottomNavigationBar: MyBottomNavbar());
+        bottomNavigationBar: MyBottomNavbar(
+            height: kToolbarHeight,
+            text: 'calculate',
+            onTap: () {
+              CalculatorBrain calc = CalculatorBrain(height: _currentHeightValue.round(), weight: _currentWeightValue.round());
+              Navigator.push(context, MaterialPageRoute(builder: (context) => ResultPage(bmiResult: calc.calculateBMI(), resultText: calc.getResult(), interpretation: calc.getInterpretation())));
+            }));
   }
 }
