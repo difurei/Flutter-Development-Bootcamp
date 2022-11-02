@@ -5,6 +5,7 @@ Bootcamp github: https://github.com/londonappbrewery/Flutter-Course-Resources
 
 ## My Creating Apps:
 
+* 1 app. I AM POOR Easy Flutter App: https://github.com/difurei/flutter-development-bootcamp/tree/1_app_poor
 * 2 app. My Visit Card Easy Flutter App: https://github.com/difurei/flutter-development-bootcamp/tree/2_app_visit_card
 * 3 app. Dicee Easy Flutter App: https://github.com/difurei/flutter-development-bootcamp/tree/3_app_dicee
 * 7 app. Destini Challenge Easy Flutter App: https://github.com/difurei/flutter-development-bootcamp/tree/7_app_destini
