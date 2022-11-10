@@ -23,9 +23,9 @@ class _CityScreenState extends State<CityScreen> {
             children: <Widget>[
               Align(
                 alignment: Alignment.topLeft,
-                child: FlatButton(
+                child: IconButton(
                   onPressed: () {},
-                  child: Icon(
+                  icon: Icon(
                     Icons.arrow_back_ios,
                     size: 50.0,
                   ),
@@ -35,7 +35,7 @@ class _CityScreenState extends State<CityScreen> {
                 padding: EdgeInsets.all(20.0),
                 child: null,
               ),
-              ElevatedButton(
+              TextButton(
                 onPressed: () {},
                 child: Text(
                   'Get Weather',

@@ -4,7 +4,7 @@
  * gradle plugin from the resource data it found. It
  * should not be modified by hand.
  */
-package androidx.lifecycle;
+package com.google.android.gms.location;
 
 public final class R {
     private R() {}

@@ -28,16 +28,16 @@ class _LocationScreenState extends State<LocationScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  ElevatedButton(
+                  IconButton(
                     onPressed: () {},
-                    child: Icon(
+                    icon: Icon(
                       Icons.near_me,
                       size: 50.0,
                     ),
                   ),
-                  ElevatedButton(
+                  IconButton(
                     onPressed: () {},
-                    child: Icon(
+                    icon: Icon(
                       Icons.location_city,
                       size: 50.0,
                     ),
