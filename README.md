@@ -14,3 +14,4 @@ Bootcamp github: https://github.com/londonappbrewery/Flutter-Course-Resources
 * 7 app. Destini Challenge Easy Flutter App: https://github.com/difurei/flutter-development-bootcamp/tree/7_app_destini
 * 8 app. BMI Calculator Easy Flutter App: https://github.com/difurei/flutter-development-bootcamp/tree/8_app_bmi_calc
 * 9 app. Clima Weather Easy Flutter App: https://github.com/difurei/flutter-development-bootcamp/tree/9_app_clima
+* 10 app. Bitcoin Ticker Easy Flutter App: https://github.com/difurei/flutter-development-bootcamp/tree/10_app_bitcoin
