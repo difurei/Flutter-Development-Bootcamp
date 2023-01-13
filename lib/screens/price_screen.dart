@@ -11,7 +11,9 @@ class PriceScreen extends StatefulWidget {
 }
 
 class _PriceScreenState extends State<PriceScreen> {
-  String selectedCurrency = currenciesList[0];
+  String androidSelectedCurrency = currenciesList[0];
+  int iOSSelectedIndex = 0;
+  String iOSSelectedCurrency = currenciesList[0];
 
   CoinData coinModel = CoinData();
 
@@ -24,29 +26,34 @@ class _PriceScreenState extends State<PriceScreen> {
     }
 
     return DropdownButton<String>(
-      onTap: () {},
-        value: selectedCurrency,
+        onTap: () {},
+        value: androidSelectedCurrency,
         items: dropdownMenuItemList,
-        onChanged: (value) async{
+        onChanged: (value) async {
           setState(() {
-            selectedCurrency = value;
-            update();
+            androidSelectedCurrency = value;
+            androidUpdate();
           });
         });
   }
 
   CupertinoPicker IOSPicker() {
     List<Text> pickerItems = [];
+    List<String> stringPickerItems = [];
 
     for (String item in currenciesList) {
       pickerItems.add(Text(item));
+      stringPickerItems.add(item);
     }
 
     return CupertinoPicker(
       itemExtent: 32.0,
-      onSelectedItemChanged: (selectedIndex) async{
-        print(selectedIndex);
-        update();
+      onSelectedItemChanged: (selectedIndex) async {
+        setState(() {
+          iOSSelectedIndex = selectedIndex;
+          iOSSelectedCurrency = stringPickerItems[iOSSelectedIndex];
+          iOSUpdate();
+        });
       },
       children: pickerItems,
     );
@@ -64,20 +71,36 @@ class _PriceScreenState extends State<PriceScreen> {
     return coin;
   }
 
-  Future update() async {
-      var coinBTC = await coinModel.getCoinData(cryptoList[0], selectedCurrency);
-      var coinETH = await coinModel.getCoinData(cryptoList[1], selectedCurrency);
-      var coinLTC = await coinModel.getCoinData(cryptoList[2], selectedCurrency);
-      btc = updateCoin(coinBTC);
-      eth = updateCoin(coinETH);
-      ltc = updateCoin(coinLTC);
+  Future androidUpdate() async {
+    var coinBTC =
+        await coinModel.getCoinData(cryptoList[0], androidSelectedCurrency);
+    var coinETH =
+        await coinModel.getCoinData(cryptoList[1], androidSelectedCurrency);
+    var coinLTC =
+        await coinModel.getCoinData(cryptoList[2], androidSelectedCurrency);
+    btc = updateCoin(coinBTC);
+    eth = updateCoin(coinETH);
+    ltc = updateCoin(coinLTC);
+  }
+
+  Future iOSUpdate() async {
+    var coinBTC =
+        await coinModel.getCoinData(cryptoList[0], iOSSelectedCurrency);
+    var coinETH =
+        await coinModel.getCoinData(cryptoList[1], iOSSelectedCurrency);
+    var coinLTC =
+        await coinModel.getCoinData(cryptoList[2], iOSSelectedCurrency);
+    btc = updateCoin(coinBTC);
+    eth = updateCoin(coinETH);
+    ltc = updateCoin(coinLTC);
   }
 
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    update();
+    androidUpdate();
+    iOSUpdate();
   }
 
   @override
@@ -86,15 +109,33 @@ class _PriceScreenState extends State<PriceScreen> {
       appBar: AppBar(
         title: Text('🤑 Coin Ticker'),
         centerTitle: true,
-        leading: IconButton(onPressed: () async => update(), icon: Icon(Icons.restart_alt),),
+        leading: IconButton(
+          onPressed: () async => Platform.isIOS ? iOSUpdate() : androidUpdate(),
+          icon: Icon(Icons.restart_alt),
+        ),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          CryptoCard(coinName: '${cryptoList[0]}', coin: btc, selectedCurrency: selectedCurrency),
-          CryptoCard(coinName: '${cryptoList[1]}', coin: eth, selectedCurrency: selectedCurrency),
-          CryptoCard(coinName: '${cryptoList[2]}', coin: ltc, selectedCurrency: selectedCurrency),
+          CryptoCard(
+              coinName: '${cryptoList[0]}',
+              coin: btc,
+              selectedCurrency: Platform.isIOS
+                  ? iOSSelectedCurrency
+                  : androidSelectedCurrency),
+          CryptoCard(
+              coinName: '${cryptoList[1]}',
+              coin: eth,
+              selectedCurrency: Platform.isIOS
+                  ? iOSSelectedCurrency
+                  : androidSelectedCurrency),
+          CryptoCard(
+              coinName: '${cryptoList[2]}',
+              coin: ltc,
+              selectedCurrency: Platform.isIOS
+                  ? iOSSelectedCurrency
+                  : androidSelectedCurrency),
           Container(
             height: 150.0,
             alignment: Alignment.center,
