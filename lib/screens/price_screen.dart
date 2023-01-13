@@ -22,11 +22,10 @@ class _PriceScreenState extends State<PriceScreen> {
 
     for (String item in currenciesList) {
       dropdownMenuItemList
-          .add(DropdownMenuItem(child: Text(item), value: item));
+          .add(DropdownMenuItem(child: Text(item, style: TextStyle(color: Colors.black),), value: item));
     }
 
     return DropdownButton<String>(
-        onTap: () {},
         value: androidSelectedCurrency,
         items: dropdownMenuItemList,
         onChanged: (value) async {

@@ -20,7 +20,7 @@ class CryptoCard extends StatelessWidget {
         child: Padding(
           padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
           child: Text(
-            '1 $coinName = $coin $selectedCurrency',
+            '1 $coinName = ${coin.toStringAsFixed(0)} $selectedCurrency',
             textAlign: TextAlign.center,
             style: TextStyle(
                 fontSize: 20.0,
