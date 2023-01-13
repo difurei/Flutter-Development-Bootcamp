@@ -30,11 +30,11 @@ const List<String> cryptoList = [
   'LTC',
 ];
 
-const bitcoinAverageUrl = 'https://apiv2.bitcoinaverage.com/indices/global/ticker/BTCUSD';
+const bitcoinAverageUrl = 'https://apiv2.bitcoinaverage.com/indices/global/ticker/';
 
 class CoinData {
-  Future getCoinData() async {
-    NetworkHelper networkHelper = NetworkHelper(bitcoinAverageUrl);
+  Future getCoinData(String coinName, String currencie) async {
+    NetworkHelper networkHelper = NetworkHelper('$bitcoinAverageUrl$coinName$currencie');
     var coinData = networkHelper.getData();
 
     return coinData;

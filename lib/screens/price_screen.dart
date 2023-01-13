@@ -3,6 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io' show Platform;
 
+import '../widgets/CryptoCard.dart';
+
 class PriceScreen extends StatefulWidget {
   @override
   _PriceScreenState createState() => _PriceScreenState();
@@ -25,9 +27,10 @@ class _PriceScreenState extends State<PriceScreen> {
       onTap: () {},
         value: selectedCurrency,
         items: dropdownMenuItemList,
-        onChanged: (value) {
+        onChanged: (value) async{
           setState(() {
             selectedCurrency = value;
+            update();
           });
         });
   }
@@ -41,25 +44,33 @@ class _PriceScreenState extends State<PriceScreen> {
 
     return CupertinoPicker(
       itemExtent: 32.0,
-      onSelectedItemChanged: (selectedIndex) {
+      onSelectedItemChanged: (selectedIndex) async{
         print(selectedIndex);
+        update();
       },
       children: pickerItems,
     );
   }
 
-  double coinUSD;
+  double coin;
+  double btc;
+  double eth;
+  double ltc;
 
-  void updateUI(dynamic coinData) {
+  double updateCoin(dynamic coinData) {
     setState(() {
-      coinUSD = coinData['last'];
-      print('USD = $coinUSD');
+      coin = coinData['last'];
     });
+    return coin;
   }
 
   Future update() async {
-      var coinData = await coinModel.getCoinData();
-      updateUI(coinData);
+      var coinBTC = await coinModel.getCoinData(cryptoList[0], selectedCurrency);
+      var coinETH = await coinModel.getCoinData(cryptoList[1], selectedCurrency);
+      var coinLTC = await coinModel.getCoinData(cryptoList[2], selectedCurrency);
+      btc = updateCoin(coinBTC);
+      eth = updateCoin(coinETH);
+      ltc = updateCoin(coinLTC);
   }
 
   @override
@@ -71,7 +82,6 @@ class _PriceScreenState extends State<PriceScreen> {
 
   @override
   Widget build(BuildContext context) {
-    print('CoinUSD = $coinUSD');
     return Scaffold(
       appBar: AppBar(
         title: Text('🤑 Coin Ticker'),
@@ -82,26 +92,9 @@ class _PriceScreenState extends State<PriceScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Padding(
-            padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
-            child: Card(
-              color: Colors.amber,
-              elevation: 5.0,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
-                child: Text(
-                  '1 BTC = $coinUSD USD',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      fontSize: 20.0,
-                      color: Theme.of(context).textTheme.button.color),
-                ),
-              ),
-            ),
-          ),
+          CryptoCard(coinName: '${cryptoList[0]}', coin: btc, selectedCurrency: selectedCurrency),
+          CryptoCard(coinName: '${cryptoList[1]}', coin: eth, selectedCurrency: selectedCurrency),
+          CryptoCard(coinName: '${cryptoList[2]}', coin: ltc, selectedCurrency: selectedCurrency),
           Container(
             height: 150.0,
             alignment: Alignment.center,
