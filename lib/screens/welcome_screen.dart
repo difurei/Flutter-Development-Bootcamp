@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:test_flutter/screens/login_screen.dart';
 import 'package:test_flutter/screens/registration_screen.dart';
 
+import '../widgets/custom_button_widget.dart';
+
 class WelcomeScreen extends StatefulWidget {
   static const String route = '/welcome';
 
@@ -78,41 +80,15 @@ class _WelcomeScreenState extends State<WelcomeScreen>
             SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(LoginScreen.route);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
+            CustomButton(
+              text: 'Log in',
+              color: Colors.lightBlue,
+              function: () => Navigator.of(context).pushNamed(LoginScreen.route),
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    Navigator.of(context).pushNamed(RegistrationScreen.route);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                  ),
-                ),
-              ),
+            CustomButton(
+              text: 'Register',
+              color: Colors.blueAccent,
+              function: () => Navigator.of(context).pushNamed(RegistrationScreen.route),
             ),
           ],
         ),
@@ -120,3 +96,5 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     );
   }
 }
+
+
