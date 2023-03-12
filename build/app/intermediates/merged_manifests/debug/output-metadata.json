@@ -4,7 +4,7 @@
     "type": "MERGED_MANIFESTS",
     "kind": "Directory"
   },
-  "applicationId": "com.example.test_flutter",
+  "applicationId": "com.difurei.flash_chat",
   "variantName": "debug",
   "elements": [
     {

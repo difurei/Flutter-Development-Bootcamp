@@ -4,7 +4,7 @@
     "type": "COMPATIBLE_SCREEN_MANIFEST",
     "kind": "Directory"
   },
-  "applicationId": "com.example.test_flutter",
+  "applicationId": "com.difurei.flash_chat",
   "variantName": "debug",
   "elements": []
 }

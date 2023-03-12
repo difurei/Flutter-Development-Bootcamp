@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "398202703231",
+    "project_id": "flash-chat-40c51",
+    "storage_bucket": "flash-chat-40c51.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:398202703231:android:066b2125b07f2c084f9e4a",
+        "android_client_info": {
+          "package_name": "com.difurei.flash_chat"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "398202703231-fv25epuelerb9cs3e0gc9llvq4phbvfl.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCLFuAqIcagciUna5jOxSMbrhdWsNRfAhU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "398202703231-fv25epuelerb9cs3e0gc9llvq4phbvfl.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
