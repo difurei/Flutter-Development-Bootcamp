@@ -176,6 +176,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "modal_progress_hud_nsn",
+      "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/modal_progress_hud_nsn-0.3.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "path",
       "rootUri": "file:///D:/flutter/.pub-cache/hosted/pub.dartlang.org/path-1.8.2",
       "packageUri": "lib/",
@@ -248,7 +254,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-03-12T09:07:06.761736Z",
+  "generated": "2023-03-13T11:02:23.093332Z",
   "generator": "pub",
   "generatorVersion": "2.18.6"
 }

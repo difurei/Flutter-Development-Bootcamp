@@ -44,6 +44,7 @@ MERGED from C:\Users\Difurei\StudioProjects\flash_flutter\android\app\src\main\A
 MERGED from [:firebase_auth] C:\Users\Difurei\StudioProjects\flash_flutter\build\firebase_auth\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:cloud_firestore] C:\Users\Difurei\StudioProjects\flash_flutter\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
 MERGED from [:firebase_core] C:\Users\Difurei\StudioProjects\flash_flutter\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-17:12
+MERGED from [:modal_progress_hud_nsn] C:\Users\Difurei\StudioProjects\flash_flutter\build\modal_progress_hud_nsn\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Difurei\.gradle\caches\transforms-3\c640cbfc810dab2cae3c3f076d329b8c\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:17:1-23:12
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Difurei\.gradle\caches\transforms-3\36a45b2abb854eca36c578fbec6ed4df\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:17:1-33:12
 MERGED from [com.google.firebase:firebase-auth:21.1.0] C:\Users\Difurei\.gradle\caches\transforms-3\4a9da42da7989287787340e3f7e46327\transformed\jetified-firebase-auth-21.1.0\AndroidManifest.xml:17:1-73:12
@@ -105,6 +106,8 @@ MERGED from [:cloud_firestore] C:\Users\Difurei\StudioProjects\flash_flutter\bui
 MERGED from [:cloud_firestore] C:\Users\Difurei\StudioProjects\flash_flutter\build\cloud_firestore\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] C:\Users\Difurei\StudioProjects\flash_flutter\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:firebase_core] C:\Users\Difurei\StudioProjects\flash_flutter\build\firebase_core\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:modal_progress_hud_nsn] C:\Users\Difurei\StudioProjects\flash_flutter\build\modal_progress_hud_nsn\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:modal_progress_hud_nsn] C:\Users\Difurei\StudioProjects\flash_flutter\build\modal_progress_hud_nsn\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Difurei\.gradle\caches\transforms-3\c640cbfc810dab2cae3c3f076d329b8c\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window-java:1.0.0-beta04] C:\Users\Difurei\.gradle\caches\transforms-3\c640cbfc810dab2cae3c3f076d329b8c\transformed\jetified-window-java-1.0.0-beta04\AndroidManifest.xml:19:5-21:41
 MERGED from [androidx.window:window:1.0.0-beta04] C:\Users\Difurei\.gradle\caches\transforms-3\36a45b2abb854eca36c578fbec6ed4df\transformed\jetified-window-1.0.0-beta04\AndroidManifest.xml:20:5-22:41
